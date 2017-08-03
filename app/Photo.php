@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
     protected $fillable = [
-        'password','remember_token'
+        'password','remember_token','file'
     ];
 
     public function role() {
