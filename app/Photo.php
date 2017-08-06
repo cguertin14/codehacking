@@ -10,11 +10,17 @@ class Photo extends Model
         'password','remember_token','file'
     ];
 
+    protected $uploads = '/images/';
+
     public function role() {
         return $this->belongsTo('App\Role');
     }
 
     public function photo() {
         return $this->belongsTo('App\Photo');
+    }
+
+    public function getFileAttribute($photo) {
+        return $this->uploads . $photo;
     }
 }
