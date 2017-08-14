@@ -120,8 +120,6 @@ class AdminUsersController extends Controller
 
         $user->update($input);
         return redirect('/admin/users');
-
-
     }
 
     /**
@@ -140,7 +138,4 @@ class AdminUsersController extends Controller
         Session::flash('deleted_user','The user has been deleted');
         return redirect('/admin/users');
     }
-
-
-
 }

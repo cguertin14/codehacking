@@ -6,6 +6,8 @@
       <p class="bg-danger">{{session('deleted_user')}}</p>
   @endif
 
+  @include('include.hover')
+
   <h1>Users</h1>
 
   <table class="table">
@@ -21,13 +23,13 @@
         <th>Updated</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="hoverTable">
       @if ($users)
         @foreach($users as $user)
-          <tr>
+          <tr class='clickable-row' data-href='{{route('admin.users.edit', $user->id)}}'>
             <td>{{$user->id}}</td>
             <td><img height="50" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/50x50' }}" alt=""></td>
-            <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
+            <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->role === null ? 'User has no role' : $user->role->name}}</td>
             <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
