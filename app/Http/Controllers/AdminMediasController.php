@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Photo;
+use Illuminate\Support\Facades\Session;
 
 class AdminMediasController extends Controller
 {
@@ -36,7 +37,10 @@ class AdminMediasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('file');
+        $name = time() . $file->getClientOriginalName();
+        $file->move(public_path('images'),$name);
+        Photo::create(['file' => $name]);
     }
 
     /**
@@ -81,6 +85,13 @@ class AdminMediasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $photo = Photo::findOrFail($id);
+
+        if (file_exists(public_path() . $photo->file))
+            unlink(public_path() . $photo->file);
+        $photo->delete();
+
+        Session::flash('deleted_media','Selected media was deleted');
+        return redirect('/admin/media');
     }
 }

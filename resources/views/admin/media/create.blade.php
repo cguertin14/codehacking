@@ -15,7 +15,6 @@
 
     {!! Form::open(['method' => 'POST', 'action' => 'AdminMediasController@store','class'=>'dropzone']) !!}
 
-
     {!! Form::close() !!}
 
     @include('include.formerrors')
