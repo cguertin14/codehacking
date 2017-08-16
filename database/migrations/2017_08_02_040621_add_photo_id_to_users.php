@@ -14,7 +14,7 @@ class AddPhotoIdToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('photo_id');
+            $table->integer('photo_id')->index()->unsigned()->nullable();
         });
     }
 
