@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\CreatePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Comment;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Photo;
@@ -127,8 +128,10 @@ class AdminPostsController extends Controller
 
     public function post($id) {
         $post = Post::findOrFail($id);
-        
-        return view('post',compact('post'));
+
+        $comments = $post->comments()->whereIsActive(1)->get();
+
+        return view('post',compact('post','comments'));
     }
 
 }

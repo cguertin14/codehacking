@@ -41,6 +41,13 @@ Route::group(['middleware' => 'admin'], function() {
 
   Route::resource('admin/comments',         'PostCommentController',     ['as' => 'admin']);
 
-  Route::resource('admin/comments/replies', 'CommentRepliesController',  ['as' => 'admin']);
+  Route::resource('admin/comments/replies', 'CommentRepliesController',  ['as' => 'admin.comments']);
+
+});
+
+
+Route::group(['middleware' => 'auth'], function() {
+
+  Route::post('comment/reply','CommentRepliesController@createReply');
 
 });
