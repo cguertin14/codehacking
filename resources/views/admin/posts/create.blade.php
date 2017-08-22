@@ -4,6 +4,8 @@
 
 @section('content')
 
+    @include('include.tinyeditor')
+
     <h1>Create post</h1>
 
     {!! Form::open(['method' => 'POST', 'action' => 'AdminPostsController@store','files'=>true]) !!}

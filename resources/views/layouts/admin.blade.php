@@ -14,7 +14,6 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -331,7 +330,6 @@
 
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
-
 
 @yield('scripts')
 

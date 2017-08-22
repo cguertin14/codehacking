@@ -4,6 +4,8 @@
 
 @section('content')
 
+  @include('include.tinyeditor')
+
     <h1>Edit post</h1>
 
 <div class="row">

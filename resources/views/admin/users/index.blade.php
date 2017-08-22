@@ -6,7 +6,9 @@
       <p class="bg-danger">{{session('deleted_user')}}</p>
   @endif
 
-  @include('include.hover')
+  @section('scripts')
+    @include('include.hover')
+  @endsection
 
   <h1>Users</h1>
 
@@ -32,7 +34,7 @@
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->role === null ? 'User has no role' : $user->role->name}}</td>
-            <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
+            <td>{{$user->is_active === 1 ? 'Active' : 'Not Active'}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>
             <td>{{$user->updated_at->diffForHumans()}}</td>
           </tr>
