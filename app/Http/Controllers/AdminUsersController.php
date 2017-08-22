@@ -19,7 +19,7 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(4);
         return view('admin.users.index',compact('users'));
     }
 
@@ -74,7 +74,8 @@ class AdminUsersController extends Controller
      */
     public function show($id)
     {
-        return view('admin.users.show');
+        $user = User::findOrFail($id);
+        return view('admin.users.show',compact('user'));
     }
 
     /**

@@ -1,7 +1,5 @@
 @extends('layouts.blog-post')
 
-
-
 @section('content')
 
     <!-- Blog Post -->
@@ -11,7 +9,7 @@
 
     <!-- Author -->
     <p class="lead">
-        by <a href="#">{{$post->user->name}}</a>
+        by <a href="{{route('admin.users.show',$post->user->id)}}">{{$post->user->name}}</a>
     </p>
 
     <hr>
@@ -30,6 +28,8 @@
     <p class="lead">{!! $post->body !!}</p>
 
     <hr>
+
+    <!--
 
     {{-- @if (Session::has('comment_message'))
 
@@ -183,8 +183,7 @@
             </div>
             <!-- End Nested Comment -->
         </div>
-    </div> --}}
-
+    </div> --}}-->
     <div id="disqus_thread"></div>
     <script>
 
