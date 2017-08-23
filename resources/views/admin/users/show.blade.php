@@ -6,13 +6,20 @@
         @include('include.hover')
     @endsection
 
-    <h1 class="text-center">{{$user->name}}</h1>
-
-    <br>
+    <style>
+        .image {
+            cursor: pointer;
+            elevation: higher;
+        }
+    </style>
 
     <div class="container text-center">
-        <img height="200" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/50x50' }}" alt="">
+        <a href="{{$user->photo ? route('admin.media.show',$user->photo->id): ""}}">
+            <img class="{{$user->photo ? "image" : ""}} " height="200" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/50x50' }}" alt="">
+        </a>
     </div>
+
+    <h1 class="text-center">{{$user->name}}</h1>
 
     <br>
     <br>

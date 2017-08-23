@@ -51,7 +51,8 @@ class AdminMediasController extends Controller
      */
     public function show($id)
     {
-        //
+        $photo = Photo::findOrFail($id);
+        return view('admin.media.show',compact('photo'));
     }
 
     /**

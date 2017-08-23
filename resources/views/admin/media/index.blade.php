@@ -2,8 +2,6 @@
 
 @section('content')
 
-    @include('include.hover')
-
     @if (Session::has('deleted_media'))
         <p class="bg-danger">{{session('deleted_media')}}</p>
     @endif
@@ -35,7 +33,7 @@
           </thead>
           <tbody class="hoverTable">
             @foreach ($photos as $photo)
-              <tr>
+              <tr class='clickable-row' data-href='{{route('admin.media.show', $photo->id)}}'>
                 <td><input class="checkBoxes" type="checkbox" name="checkBoxArray[]" value="{{$photo->id}}"></td>
                 <td>{{$photo->id}}</td>
                 <td><img height="50" src="{{$photo->file}}" alt=""></td>
@@ -69,22 +67,24 @@
 
 @section('scripts')
 
-  <script type="text/javascript">
+    @include('include.hover')
 
-      $(document).ready(function() {
-          $("#options").click(function() {
-              if (this.checked) {
-                  $('.checkBoxes').each(function() {
-                      this.checked = true;
-                  });
-              } else {
-                $('.checkBoxes').each(function() {
-                    this.checked = false;
-                });
-              }
+    <script type="text/javascript">
+
+          $(document).ready(function() {
+              $("#options").click(function() {
+                  if (this.checked) {
+                      $('.checkBoxes').each(function() {
+                          this.checked = true;
+                      });
+                  } else {
+                    $('.checkBoxes').each(function() {
+                        this.checked = false;
+                    });
+                  }
+              });
           });
-      });
 
-  </script>
+    </script>
 
 @endsection

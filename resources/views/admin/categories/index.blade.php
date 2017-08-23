@@ -4,8 +4,6 @@
 
     <h1>Categories</h1>
 
-    @include('include.hover')
-
     @if (Session::has('deleted_post'))
         <p class="bg-danger">{{session('deleted_post')}}</p>
     @endif
@@ -54,4 +52,8 @@
 
     </div>
 
+@endsection
+
+@section('scripts')
+    @include('include.hover')
 @endsection

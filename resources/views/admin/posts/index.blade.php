@@ -32,7 +32,7 @@
               <td><a href="{{route('admin.posts.edit',$post->id)}}">{{$post->user->name}}</a></td>
               <td>{{$post->category ? $post->category->name : 'No category here'}}</td>
               <td>{{$post->title}}</td>
-              <td>{{str_limit($post->body,30)}}</td>
+              <td>{!! str_limit($post->body,30) !!}</td>
               <td><a href="{{route('home.post',$post->slug)}}">View Post</a></td>
               <td><a href="{{route('admin.comments.index',$post->id)}}">View comments</a></td>
               <td>{{$post->created_at->diffForHumans()}}</td>
